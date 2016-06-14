@@ -1,0 +1,19 @@
+[Unit]
+Description=<%= @name %> service
+After=nats.service redis.service postgres.service
+Requires=docker.service
+
+[Service]
+User=<%= @user %>
+Restart=always
+Environment=FLOW_ENV=<%= @env %>
+Environment=RACK_ENV=<%= @rackenv %>
+Environment=NATS_URI=<%= @natsuri %>
+WorkingDirectory=/opt/ernest/<%= @name %>
+ExecStartPre=/usr/bin/timeout 120 /bin/bash -c 'while ! nc -z -v -q 1 localhost 4222; do sleep 1; done'
+ExecStartPre=/usr/bin/timeout 120 /bin/bash -c 'while ! nc -z -v -q 1 localhost 6379; do sleep 1; done'
+ExecStartPre=/usr/bin/timeout 120 /bin/bash -c 'while ! nc -z -v -q 1 localhost 5432; do sleep 1; done'
+ExecStart=/usr/local/bin/rackup
+
+[Install]
+WantedBy=multi-user.target

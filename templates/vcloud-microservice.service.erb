@@ -1,0 +1,17 @@
+[Unit]
+Description=<%= @name %> microservice
+After=nats.service
+Requires=nats.service
+
+[Service]
+User=<%= @user %>
+Restart=always
+Environment=NATS_URI=<%= @natsuri %>
+Environment=GOPATH=<%= @gopath %>
+Environment=JRUBYPATH=<%= @jrubypath %>
+WorkingDirectory=/opt/ernest/<%= @name %>
+ExecStartPre=/usr/bin/timeout 120 /bin/bash -c 'while ! nc -z -v -q 1 localhost 4222; do sleep 1; done'
+ExecStart=/bin/sh -c './run.sh'
+
+[Install]
+WantedBy=multi-user.target

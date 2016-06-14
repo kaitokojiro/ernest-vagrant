@@ -1,0 +1,132 @@
+upstream backendauth {
+    server <%= @ip %>:10000       weight=5;
+}
+
+upstream backendclient {
+    server <%= @ip %>:11000       weight=5;
+}
+
+upstream backenddatacenter {
+    server <%= @ip %>:12000       weight=5;
+}
+
+upstream backendrouter {
+    server <%= @ip %>:13000       weight=5;
+}
+
+upstream backendnetwork {
+    server <%= @ip %>:14000       weight=5;
+}
+
+upstream backendinstance {
+    server <%= @ip %>:15000       weight=5;
+}
+
+upstream backendfirewall {
+    server <%= @ip %>:17000       weight=5;
+}
+
+upstream backendnat {
+    server <%= @ip %>:18000       weight=5;
+}
+
+upstream backendexecution {
+    server <%= @ip %>:19000       weight=5;
+}
+
+upstream backendservice {
+    server <%= @ip %>:20000      weight=5;
+}
+
+upstream backendgpb {
+    server <%= @ip %>:21000      weight=5;
+}
+
+upstream backendmonitor {
+    server <%= @ip %>:22000      weight=5;
+}
+
+server {
+    listen 443 ssl;
+    server_name <%= @hostname %>;
+    ssl_certificate /etc/nginx/ssl/<%= @hostname %>.crt;
+    ssl_certificate_key /etc/nginx/ssl/<%= @hostname %>.key;
+
+    location /users/  {
+        proxy_pass http://backendauth;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /session/  {
+        proxy_pass http://backendauth;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /clients/  {
+        proxy_pass http://backendclient;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /datacenters/  {
+        proxy_pass http://backenddatacenter;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /routers/  {
+        proxy_pass http://backendrouter;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /private-networks/  {
+        proxy_pass http://backendnetwork;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /instances/  {
+        proxy_pass http://backendinstance;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /firewalls/  {
+        proxy_pass http://backendfirewall;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /nats/  {
+        proxy_pass http://backendnat;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /executions/  {
+        proxy_pass http://backendexecution;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /services/ {
+        proxy_pass  http://backendservice;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /gpb/ {
+        proxy_pass  http://backendgpb;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /events {
+        proxy_pass  http://backendmonitor;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	proxy_set_header Connection '';
+	proxy_http_version 1.1;
+	proxy_read_timeout 3600s;
+	chunked_transfer_encoding off;
+	proxy_buffering off;
+	proxy_cache off;
+	error_page 504 =200 @eventsource-close-graceful;
+    }
+
+    location @eventsource-close-graceful {
+        add_header Content-Type text/event-stream;
+        return 200;
+    }
+
+}

@@ -1,0 +1,108 @@
+#!/bin/bash
+
+
+# Reset
+Color_Off='\033[0m'       # Text Reset
+
+# Regular Colors
+Black='\033[0;30m'        # Black
+Red='\033[0;31m'          # Red
+Green='\033[0;32m'        # Green
+Yellow='\033[0;33m'       # Yellow
+Blue='\033[0;34m'         # Blue
+Purple='\033[0;35m'       # Purple
+Cyan='\033[0;36m'         # Cyan
+White='\033[0;37m'        # White
+
+# Bold
+BBlack='\033[1;30m'       # Black
+BRed='\033[1;31m'         # Red
+BGreen='\033[1;32m'       # Green
+BYellow='\033[1;33m'      # Yellow
+BBlue='\033[1;34m'        # Blue
+BPurple='\033[1;35m'      # Purple
+BCyan='\033[1;36m'        # Cyan
+BWhite='\033[1;37m'       # White
+
+# Services
+supporting=( nats redis postgres )
+logging=( elasticsearch logstash kibana )
+gpb=( <%= @gpb.join(' ') %> )
+data=( <%= @data.join(' ') %> )
+vcloud=( <%= @vcloud.join(' ') %> )
+
+all=( supporting logging gpb data vcloud )
+
+function checkservice {
+    systemctl status $1 > /dev/null 2>&1
+    echo $?
+}
+
+function startservices {
+        services=${1}[@]
+        for s in "${!services}"; do
+          echo -e "$Green$s"
+          systemctl stop $s > /dev/null 2>&1
+        done
+}
+
+function stopservices {
+        services=${1}[@]
+        for s in "${!services}"; do
+          echo -e "$Green$s"
+          systemctl stop $s > /dev/null 2>&1
+        done
+}
+
+
+function restartservices {
+        services=${1}[@]
+        for s in "${!services}"; do
+          echo -e "$Green$s"
+          systemctl restart $s > /dev/null 2>&1
+        done
+}
+
+function outputstatus {
+    name=$1
+    services=${name}[@]
+    echo -e "$White$name\n"
+
+    for s in "${!services}"; do
+      status=$(checkservice $s)
+      if [[ $status -eq 0 ]]; then
+        echo -e "$Green$s"
+      elif [[ $status == 3 ]]; then
+        echo -e "$Yellow$s"
+      else
+        echo -e "$Red$s"
+      fi
+    done
+
+    printf '\n\n'
+}
+
+case "$1" in
+  start)
+    for sg in ${all[@]}; do
+      startservices $sg
+    done
+    ;;
+  stop)
+    for sg in ${all[@]}; do
+      stopservices $sg
+    done
+    ;;
+  status)
+    for sg in ${all[@]}; do
+      outputstatus $sg
+    done
+    ;;
+  restart)
+    for sg in ${all[@]}; do
+      restartservices $sg
+    done
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart|status}"
+esac

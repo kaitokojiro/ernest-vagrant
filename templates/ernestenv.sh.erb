@@ -1,0 +1,13 @@
+# Ernest environment
+export FLOW_ENV=<%= @env %>
+
+# Rack environment
+<% if @env == 'dev' %>
+export RACK_ENV=development
+<% elsif @env == 'test' %>
+export RACK_ENV=test
+<% else %>
+export RACK_ENV=production
+<% end %>
+
+export NATS_URI=<%= @nats_uri %>

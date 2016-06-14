@@ -1,0 +1,15 @@
+[Unit]
+Description=elasticsearch
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop elasticsearch
+ExecStartPre=-/usr/bin/docker rm elasticsearch
+ExecStartPre=/usr/bin/docker pull elasticsearch
+ExecStart=/usr/bin/docker run -p 9200:9200/tcp -v <%= @datavol %>:/usr/share/elasticsearch/data -h <%= @hostname %> --name elasticsearch elasticsearch -Des.network.host=0.0.0.0
+
+[Install]
+WantedBy=multi-user.target

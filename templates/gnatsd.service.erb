@@ -1,0 +1,20 @@
+[Unit]
+Description=<%= @name %>
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop <%= @name %>
+ExecStartPre=-/usr/bin/docker rm <%= @name %>
+ExecStartPre=/usr/bin/docker pull nats
+<% if @username != '' && @password != '' %>
+ExecStart=/usr/bin/docker run --name <%= @name %> -p <%= @port %>:4222 nats --user <%= @username %> --pass <%= @password %>
+<% else %>
+ExecStart=/usr/bin/docker run --name <%= @name %> -p <%= @port %>:4222 nats
+<% end %>
+
+
+[Install]
+WantedBy=multi-user.target

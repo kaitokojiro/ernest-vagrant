@@ -1,0 +1,24 @@
+input {
+    tcp {
+	host => "0.0.0.0"
+        port => 5000
+    }
+}
+
+filter {
+  multiline {
+    pattern => "^\s"
+    what => "previous"
+  }
+  json {
+    "source" => "message"
+  }
+}
+
+output {
+    elasticsearch {
+	hosts => ["elasticsearch:9200"]
+        index => "service"
+    }
+}
+

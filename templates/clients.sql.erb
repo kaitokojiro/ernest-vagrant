@@ -1,0 +1,7 @@
+CREATE table IF NOT EXISTS clients (
+  client_id VARCHAR(255) NOT NULL PRIMARY KEY,
+  client_name VARCHAR(255) NOT NULL,
+  UNIQUE (client_name)
+);
+DELETE FROM clients WHERE client_name = '<%= @client_name %>';
+INSERT INTO clients values('<%= @client_id %>','<%= @client_name %>');

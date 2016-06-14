@@ -1,0 +1,15 @@
+[Unit]
+Description=kibana
+After=docker.service elasticsearch.service
+Requires=docker.service elasticsearch.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop kibana
+ExecStartPre=-/usr/bin/docker rm kibana
+ExecStartPre=/usr/bin/docker pull kibana
+ExecStart=/usr/bin/docker run -p 5601:5601/tcp -h <%= @hostname %> -v /etc/kibana/:/etc/kibana/ --link elasticsearch --name kibana kibana:<%= @version %> -c /etc/kibana/kibana.yml
+
+[Install]
+WantedBy=multi-user.target
