@@ -54,6 +54,7 @@ if node['ernest']['environment'] == 'dev'
   end
 end
 
+=begin
 # Install each service
 node['ernest']['services']['data'].each do |service|
   repo_version = node['ernest']['versions'][service]
@@ -78,3 +79,4 @@ node['ernest']['services']['data'].each do |service|
     cwd "/opt/ernest/#{service}"
   end
 end
+=end
