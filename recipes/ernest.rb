@@ -6,6 +6,7 @@ rack_env = 'production'
 rack_env = 'test' if node['ernest']['environment'] == 'test'
 rack_env = 'development' if node['ernest']['environment'] == 'dev'
 
+=begin
 node['ernest']['services']['data'].each do |microservice|
   template "/lib/systemd/system/#{microservice}.service" do # ~FC033
     source 'data-microservice.service.erb'
@@ -32,6 +33,7 @@ node['ernest']['services']['data'].each do |microservice|
     action [:enable, :start]
   end
 end
+=end
 
 node['ernest']['services']['vcloud'].each do |microservice|
   template "/lib/systemd/system/#{microservice}.service" do # ~FC033
