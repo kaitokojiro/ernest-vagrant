@@ -59,6 +59,8 @@ node['ernest']['services']['data'].each do |service|
   repo_version = node['ernest']['versions'][service]
   rev = repo_version.nil? ? node['ernest']['version'] : repo_version
 
+  force_repo = node['ernest']['application']['repos'][service]
+
   directory '/opt/ernest' do
     owner node['server']['user']
     group node['server']['group']
@@ -69,7 +71,7 @@ node['ernest']['services']['data'].each do |service|
   git "/opt/ernest/#{service}" do
     user node['server']['user']
     group node['server']['group']
-    repository "git@github.com:#{node['ernest']['organization']}/#{service}.git"
+    repository force_repo.nil? ? "git@github.com:#{node['ernest']['organization']}/#{service}.git" : force_repo
     revision rev
     action :sync
   end
