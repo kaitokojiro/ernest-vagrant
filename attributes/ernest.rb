@@ -10,7 +10,7 @@ default['ernest']['library-versions'] = {}
 default['ernest']['libraries']['path'] = '/opt/ernest-libraries'
 
 default['ernest']['libraries']['myst']['folder'] = 'myst'
-default['ernest']['libraries']['myst']['repo'] = 'git@github.com:ernestio/myst.git'
+default['ernest']['libraries']['myst']['repo'] = "git@github.com:#{node['ernest']['organization']}/myst.git"
 default['ernest']['libraries']['myst']['path'] = '/opt/ernest-libraries/myst'
 default['ernest']['libraries']['myst']['vcloud_provider']['folder'] = 'lib/myst/providers/vcloud'
 
