@@ -5,6 +5,8 @@
 repo_version = node['ernest']['versions']['config-store']
 rev = repo_version.nil? ? node['ernest']['version'] : repo_version
 
+force_repo = node['ernest']['application']['repos']['config-store']
+
 # Create config dir
 directory '/etc/ernest' do
   owner 'root'
@@ -38,7 +40,7 @@ end
 git "/opt/go/src/github.com/#{node['ernest']['organization']}/config-store" do
   user node['server']['user']
   group node['server']['group']
-  repository "git@github.com:#{node['ernest']['organization']}/config-store.git"
+  repository force_repo.nil? ? "git@github.com:#{node['ernest']['organization']}/config-store.git" : force_repo
   revision rev
   action :sync
 end
