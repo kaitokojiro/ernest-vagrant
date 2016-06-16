@@ -17,10 +17,12 @@ node['ernest']['services']['gpb'].each do |microservice|
 
   dir = "#{ernest_path}/#{microservice}"
 
+  force_repo = node['ernest']['application']['repos'][microservice]
+
   git dir do
     user node['server']['user']
     group node['server']['group']
-    repository "git@github.com:#{node['ernest']['organization']}/#{microservice}.git"
+    repository force_repo.nil? ? "git@github.com:#{node['ernest']['organization']}/#{microservice}.git" : force_repo
     revision rev
     action :sync
   end
