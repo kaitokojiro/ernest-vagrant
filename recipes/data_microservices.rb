@@ -59,7 +59,7 @@ node['ernest']['services']['data'].each do |service|
   repo_version = node['ernest']['versions'][service]
   rev = repo_version.nil? ? node['ernest']['version'] : repo_version
 
-  force_repo = node['ernest']['application']['repos'][microservice]
+  force_repo = node['ernest']['application']['repos'][service]
 
   directory '/opt/ernest' do
     owner node['server']['user']
