@@ -30,7 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #    "ernest" => {
     #      "version" => "develop",
     #      "versions" => {
-    #        "clients-data-microservice" => "branch-name",
+    #        "workflow-manager" => "branch-name",
     #      }
     #      "application" => {
     #        "repos" => {
