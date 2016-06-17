@@ -26,28 +26,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision 'chef_solo' do |chef|
     # chef.log_level = :debug
     chef.add_recipe 'ernest-vagrant'
-    #     chef.json = {
-    #      "ernest" => {
-    #       "version" => "develop",
-    #       "versions" => {
-    #           "clients-data-microservice" => "feature/ERNEST-1028",
-    #           "datacenters-data-microservice" => "feature/ERNEST-1028",
-    #           "salt-executor-microservice" => "feature/ERNEST-1028",
-    #           "services-data-microservice" => "feature/ERNEST-1028",
-    #           "users-data-microservice" => "feature/ERNEST-1028",
-    #           "vcloud-firewall-creator-microservice" => "feature/ERNEST-1028",
-    #           "vcloud-firewall-updater-microservice" => "feature/ERNEST-1028",
-    #           "vcloud-instance-creator-microservice" => "feature/ERNEST-1028",
-    #           "vcloud-instance-deleter-microservice" => "feature/ERNEST-1028",
-    #           "vcloud-instance-updater-microservice" => "feature/ERNEST-1028",
-    #           "vcloud-nats-creator-microservice" => "feature/ERNEST-1028",
-    #           "vcloud-nats-updater-microservice" => "feature/ERNEST-1028",
-    #           "vcloud-network-creator-microservice" => "feature/ERNEST-1028",
-    #           "vcloud-network-deleter-microservice" => "feature/ERNEST-1028",
-    #           "vcloud-router-creator-microservice" => "feature/ERNEST-1028",
-    #           "vcloud-router-deleter-microservice" => "feature/ERNEST-1028"
+    #  chef.json = {
+    #    "ernest" => {
+    #      "version" => "develop",
+    #      "versions" => {
+    #        "workflow-manager" => "branch-name",
     #      }
+    #      "application" => {
+    #        "repos" => {
+    #           "workflow-manager" => "git@github.com:org/repo-name.git"
+    #        }
     #      }
-    #      }
+    #    }
+    #  }
   end
 end
