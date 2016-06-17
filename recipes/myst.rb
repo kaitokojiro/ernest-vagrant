@@ -5,6 +5,8 @@
 repo_version = node['ernest']['library-versions']['myst']
 rev = repo_version.nil? ? 'develop' : repo_version
 
+force_repo = node['ernest']['application']['repos']['myst']
+
 directory node['ernest']['libraries']['path'] do
   owner node['server']['user']
   group node['server']['group']
@@ -15,7 +17,7 @@ end
 git '/opt/ernest-libraries/myst' do
   user node['server']['user']
   group node['server']['group']
-  repository node['ernest']['libraries']['myst']['repo']
+  repository force_repo.nil? ? node['ernest']['libraries']['myst']['repo'] : force_repo
   revision rev
   action :sync
 end

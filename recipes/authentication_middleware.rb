@@ -5,6 +5,8 @@
 repo_version = node['ernest']['library-versions']['authentication-middleware']
 rev = repo_version.nil? ? 'develop' : repo_version
 
+force_repo = node['ernest']['application']['repos']['authentication-middleware']
+
 directory '/opt/ernest-libraries' do
   owner node['server']['user']
   group node['server']['group']
@@ -15,7 +17,7 @@ end
 git '/opt/ernest-libraries/authentication-middleware' do
   user node['server']['user']
   group node['server']['group']
-  repository 'git@github.com:ernestio/authentication-middleware.git'
+  repository force_repo.nil? ? 'git@github.com:ernestio/authentication-middleware.git' : force_repo
   revision rev
   action :sync
 end
