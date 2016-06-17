@@ -18,6 +18,8 @@ default['ernest']['environment'] = 'dev'
 
 default['ernest']['environments'] = %w(dev test staging)
 
+default['ernest']['application']['repos'] = {}
+
 default['ernest']['application']['service_url']   = "http://#{node['server']['hostname']}"
 default['ernest']['application']['client_id']     = SecureRandom.uuid
 default['ernest']['application']['user_id']       = SecureRandom.uuid
@@ -42,8 +44,13 @@ default['ernest']['services']['vcloud'] = ['firewall-creator-vcloud-connector', 
                                            'firewall-updater-vcloud-connector', 'nat-updater-vcloud-connector',
                                            'router-deleter-vcloud-connector', 'network-deleter-vcloud-connector']
 
+=begin
 default['ernest']['services']['data'] = ['user-store', 'service-store',
                                          'datacenter-store', 'client-store']
+=end
+
+default['ernest']['services']['data'] = ['group-store']
+
 
 default['ernest']['services']['all'] = default['ernest']['services']['gpb'] +
                                        default['ernest']['services']['vcloud'] +

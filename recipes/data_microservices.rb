@@ -82,3 +82,28 @@ node['ernest']['services']['data'].each do |service|
   end
 end
 =end
+
+ernest_path = "/opt/go/src/github.com/#{node['ernest']['organization']}"
+
+# Install each service
+node['ernest']['services']['data'].each do |service|
+  repo_version = node['ernest']['versions'][service]
+  rev = repo_version.nil? ? node['ernest']['version'] : repo_version
+
+  dir = "#{ernest_path}/#{service}"
+
+  force_repo = node['ernest']['application']['repos'][service]
+
+  git dir do
+    user node['server']['user']
+    group node['server']['group']
+    repository force_repo.nil? ? "git@github.com:#{node['ernest']['organization']}/#{microservice}.git" : force_repo
+    revision rev
+    action :sync
+  end
+
+  execute 'install microservice' do
+    command "su #{node['server']['user']} -l -c 'cd #{ernest_path}/#{microservice} && make deps && make install'"
+    action :run
+  end
+end
