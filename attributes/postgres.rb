@@ -8,7 +8,7 @@ default['postgres']['server']['root_user'] = node['secrets']['postgres']['root_u
 default['postgres']['server']['root_password'] = node['secrets']['postgres']['root_password']
 
 tables = %w(users
-            clients
+            groups
             datacenters
             services)
 

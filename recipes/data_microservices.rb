@@ -97,13 +97,13 @@ node['ernest']['services']['data'].each do |service|
   git dir do
     user node['server']['user']
     group node['server']['group']
-    repository force_repo.nil? ? "git@github.com:#{node['ernest']['organization']}/#{microservice}.git" : force_repo
+    repository force_repo.nil? ? "git@github.com:#{node['ernest']['organization']}/#{service}.git" : force_repo
     revision rev
     action :sync
   end
 
   execute 'install microservice' do
-    command "su #{node['server']['user']} -l -c 'cd #{ernest_path}/#{microservice} && make deps && make install'"
+    command "su #{node['server']['user']} -l -c 'cd #{ernest_path}/#{service} && make deps && make install'"
     action :run
   end
 end
