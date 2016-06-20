@@ -49,7 +49,7 @@ default['ernest']['services']['data'] = ['user-store', 'service-store',
                                          'datacenter-store', 'client-store']
 =end
 
-default['ernest']['services']['data'] = ['group-store', 'user-store']
+default['ernest']['services']['data'] = ['group-store', 'user-store', 'datacenter-store', 'api-gateway']
 
 default['ernest']['services']['all'] = default['ernest']['services']['gpb'] +
                                        default['ernest']['services']['vcloud'] +
