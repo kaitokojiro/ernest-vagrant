@@ -17,7 +17,7 @@ end
 git '/opt/ernest-libraries/authentication-middleware' do
   user node['server']['user']
   group node['server']['group']
-  repository force_repo.nil? ? 'git@github.com:ernestio/authentication-middleware.git' : force_repo
+  repository force_repo.nil? ? "git@github.com:#{node['ernest']['organization']}/authentication-middleware.git" : force_repo
   revision rev
   action :sync
 end
