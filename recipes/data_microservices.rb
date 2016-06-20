@@ -2,7 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-# TODO, Move this to migrations related to clients and users on the application
+# TODO, Move this to migrations related to groups and users on the application
 #
 usr = node['postgres']['database']['user']
 
@@ -10,8 +10,8 @@ bash 'install psql' do
   code 'apt-get install -q -y postgresql-client'
 end
 
-template '/tmp/clients.sql' do # ~FC033
-  source 'clients.sql.erb'
+template '/tmp/groups.sql' do # ~FC033
+  source 'groups.sql.erb'
   mode '0440'
   owner node['server']['user']
   group node['server']['group']
@@ -36,8 +36,8 @@ end
 
 host = node['postgres']['server']['host']
 
-bash 'create clients' do
-  code "psql -h #{host} -U #{usr} clients -f /tmp/clients.sql"
+bash 'create groups' do
+  code "psql -h #{host} -U #{usr} groups -f /tmp/groups.sql"
 end
 
 bash 'create users' do
@@ -45,8 +45,8 @@ bash 'create users' do
 end
 
 if node['ernest']['environment'] == 'dev'
-  bash 'create dev clients' do
-    code "psql -h #{host} -U #{usr} test_clients -f /tmp/clients.sql"
+  bash 'create dev groups' do
+    code "psql -h #{host} -U #{usr} test_groups -f /tmp/groups.sql"
   end
 
   bash 'create dev users' do

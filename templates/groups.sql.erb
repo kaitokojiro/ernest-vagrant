@@ -1,0 +1,7 @@
+CREATE table IF NOT EXISTS groups (
+  id VARCHAR(255) NOT NULL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  UNIQUE (name)
+);
+DELETE FROM groups WHERE name = '<%= @client_name %>';
+INSERT INTO groups values('<%= @client_id %>','<%= @client_name %>');
