@@ -51,7 +51,6 @@ default['ernest']['services']['data'] = ['user-store', 'service-store',
 
 default['ernest']['services']['data'] = ['group-store']
 
-
 default['ernest']['services']['all'] = default['ernest']['services']['gpb'] +
                                        default['ernest']['services']['vcloud'] +
                                        default['ernest']['services']['data']

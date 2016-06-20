@@ -85,7 +85,7 @@ end
 
 ernest_path = "/opt/go/src/github.com/#{node['ernest']['organization']}"
 
-# Install each service
+# Install each service
 node['ernest']['services']['data'].each do |service|
   repo_version = node['ernest']['versions'][service]
   rev = repo_version.nil? ? node['ernest']['version'] : repo_version
