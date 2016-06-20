@@ -16,7 +16,6 @@ node['ernest']['services']['data'].each do |microservice|
           name: microservice,
           user: node['server']['user'],
           env: node['ernest']['environment'],
-          rackenv: rack_env,
           natsuri: node['nats']['url']
         }
       end
