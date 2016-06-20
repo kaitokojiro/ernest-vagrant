@@ -18,6 +18,8 @@ default['ernest']['environment'] = 'dev'
 
 default['ernest']['environments'] = %w(dev test staging)
 
+default['ernest']['application']['repos'] = {}
+
 default['ernest']['application']['service_url']   = "http://#{node['server']['hostname']}"
 default['ernest']['application']['client_id']     = SecureRandom.uuid
 default['ernest']['application']['user_id']       = SecureRandom.uuid
