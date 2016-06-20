@@ -17,7 +17,7 @@ j = {
     'host_ip'  => ip_address,
     'hostname' => hostname
   },
-  'flow' => {
+  'ernest' => {
     'version' => version
   }
 }
