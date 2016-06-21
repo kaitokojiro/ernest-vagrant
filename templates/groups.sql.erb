@@ -1,15 +1,14 @@
 CREATE TABLE groups (
     id integer NOT NULL,
     name text,
-    created_at timestamp with time zone,
-    updated_at timestamp with time zone,
-    deleted_at timestamp with time zone
+    created_at timestamp default current_timestamp,
+    updated_at timestamp default current_timestamp,
+    deleted_at timestamp default current_timestamp
 );
 
 ALTER TABLE ONLY groups ALTER COLUMN id SET DEFAULT nextval('groups_id_seq'::regclass);
 ALTER TABLE ONLY groups ADD CONSTRAINT groups_pkey PRIMARY KEY (id);
 CREATE INDEX idx_groups_deleted_at ON groups USING btree (deleted_at);
-CREATE UNIQUE INDEX idx_per_group ON groups USING btree (group_id, name);
 
 DELETE FROM groups WHERE name = '<%= @client_name %>';
 INSERT INTO groups values('<%= @client_id %>','<%= @client_name %>');
