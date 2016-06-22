@@ -21,8 +21,8 @@ default['ernest']['environments'] = %w(dev test staging)
 default['ernest']['application']['repos'] = {}
 
 default['ernest']['application']['service_url']   = "http://#{node['server']['hostname']}"
-default['ernest']['application']['client_id']     = 0
-default['ernest']['application']['user_id']       = 0
+default['ernest']['application']['client_id']     = 1
+default['ernest']['application']['user_id']       = 1
 default['ernest']['application']['client_name']   = node['secrets']['ernest']['client_name']
 default['ernest']['application']['user_name']     = node['secrets']['ernest']['admin_username']
 default['ernest']['application']['user_email']    = node['secrets']['ernest']['admin_email']
