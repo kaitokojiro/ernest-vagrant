@@ -102,5 +102,3 @@ bash 'default_users' do
     nats-pub user.set '{"group_id": 1, "username": "admin", "password": "w4rmR3d", "admin": true}'
   EOH
 end
-
-

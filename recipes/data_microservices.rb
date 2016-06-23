@@ -4,7 +4,6 @@
 
 # TODO, Move this to migrations related to groups and users on the application
 #
-usr = node['postgres']['database']['user']
 
 bash 'install psql' do
   code 'apt-get install -q -y postgresql-client'
