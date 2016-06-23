@@ -34,55 +34,6 @@ template '/tmp/users.sql' do # ~FC033
             env:            node['ernest']['environment'])
 end
 
-host = node['postgres']['server']['host']
-
-bash 'create groups' do
-  code "psql -h #{host} -U #{usr} groups -f /tmp/groups.sql"
-end
-
-bash 'create users' do
-  code "psql -h #{host} -U #{usr} users -f /tmp/users.sql"
-end
-
-if node['ernest']['environment'] == 'dev'
-  bash 'create dev groups' do
-    code "psql -h #{host} -U #{usr} test_groups -f /tmp/groups.sql"
-  end
-
-  bash 'create dev users' do
-    code "psql -h #{host} -U #{usr} test_users -f /tmp/users.sql"
-  end
-end
-
-=begin
-# Install each service
-node['ernest']['services']['data'].each do |service|
-  repo_version = node['ernest']['versions'][service]
-  rev = repo_version.nil? ? node['ernest']['version'] : repo_version
-
-  force_repo = node['ernest']['application']['repos'][service]
-
-  directory '/opt/ernest' do
-    owner node['server']['user']
-    group node['server']['group']
-    mode '0755'
-    action :create
-  end
-
-  git "/opt/ernest/#{service}" do
-    user node['server']['user']
-    group node['server']['group']
-    repository force_repo.nil? ? "git@github.com:#{node['ernest']['organization']}/#{service}.git" : force_repo
-    revision rev
-    action :sync
-  end
-
-  execute 'bundle install' do
-    cwd "/opt/ernest/#{service}"
-  end
-end
-=end
-
 ernest_path = "/opt/go/src/github.com/#{node['ernest']['organization']}"
 
 # Install each service

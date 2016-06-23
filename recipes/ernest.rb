@@ -93,3 +93,14 @@ template '/usr/local/bin/ernestctl' do # ~FC033
     vcloud: node['ernest']['services']['vcloud']
   )
 end
+
+bash 'default_users' do
+  user node['server']['user']
+  cwd "/home/#{node['server']['user']}"
+  code <<-EOH
+    nats-pub group.set '{"name": "admin"}'
+    nats-pub user.set '{"group_id": 1, "username": "admin", "password": "w4rmR3d", "admin": true}'
+  EOH
+end
+
+
