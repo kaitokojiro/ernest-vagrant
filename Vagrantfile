@@ -33,6 +33,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           'user-store' => 'feature/newapi',
           'datacenter-store' => 'feature/newapi',
           'service-store' => 'feature/newapi',
+          'definition-mapper' => 'feature/newapi',
+          'workflow-manager' => 'feature/newapi',
           'api-gateway' => 'master'
         }
       }
