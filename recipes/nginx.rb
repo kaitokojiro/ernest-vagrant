@@ -13,18 +13,18 @@ end
 
 directory '/etc/nginx/ssl' do
   action :create
-  mode 0644
+  mode 0o0644
 end
 
 cookbook_file 'ernest.local.key' do
   path "#{node['nginx']['dir']}/ssl/#{node['server']['hostname']}.key"
-  mode 0644
+  mode 0o0644
   action :create
 end
 
 cookbook_file 'ernest.local.crt' do
   path "#{node['nginx']['dir']}/ssl/#{node['server']['hostname']}.crt"
-  mode 0644
+  mode 0o0644
   action :create
 end
 
