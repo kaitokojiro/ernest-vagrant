@@ -40,6 +40,7 @@ nats_uri = "nats://#{node['server']['hostname']}:4222"
 if node['secrets']['nats']['username'] != ''
   nats_uri = "nats://#{node['secrets']['nats']['username']}:#{node['secrets']['nats']['password']}@#{node['server']['hostname']}:4222"
 end
+nats_uri_test = node['nats']['test']['url']
 
 template '/etc/profile.d/ernestenv.sh' do # ~FC033
   source 'ernestenv.sh.erb'
@@ -48,7 +49,8 @@ template '/etc/profile.d/ernestenv.sh' do # ~FC033
   mode '0755'
   variables(
     env: node['ernest']['environment'],
-    nats_uri: nats_uri
+    nats_uri: nats_uri,
+    nats_uri_test: nats_uri_test
   )
 end
 

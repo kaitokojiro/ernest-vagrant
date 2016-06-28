@@ -14,7 +14,7 @@ end
 cookbook_file 'id_rsa.erb' do
   owner node['server']['user']
   group node['server']['group']
-  mode 0400
+  mode 0o0400
   path "#{home_dir}/.ssh/id_rsa"
   action :create_if_missing
   ignore_failure true
