@@ -9,30 +9,6 @@ bash 'install psql' do
   code 'apt-get install -q -y postgresql-client'
 end
 
-template '/tmp/groups.sql' do # ~FC033
-  source 'groups.sql.erb'
-  mode '0440'
-  owner node['server']['user']
-  group node['server']['group']
-  variables(client_id:      node['ernest']['application']['client_id'],
-            client_name:    node['ernest']['application']['client_name'],
-            env:            node['ernest']['environment'])
-end
-
-template '/tmp/users.sql' do # ~FC033
-  source 'users.sql.erb'
-  mode '0440'
-  owner node['server']['user']
-  group node['server']['group']
-  variables(client_id:      node['ernest']['application']['client_id'],
-            user_id:        node['ernest']['application']['user_id'],
-            user_name:      node['ernest']['application']['user_name'],
-            user_email:     node['ernest']['application']['user_email'],
-            user_password:  Digest::SHA2.hexdigest(node['ernest']['application']['user_salt'] + node['ernest']['application']['user_password']),
-            user_salt:      node['ernest']['application']['user_salt'],
-            env:            node['ernest']['environment'])
-end
-
 ernest_path = "/opt/go/src/github.com/#{node['ernest']['organization']}"
 
 # Install each service

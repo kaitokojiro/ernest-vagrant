@@ -29,8 +29,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.json = {
       'ernest' => {
         'versions' => {
-          'group-store' => 'master',
-          'user-store' => 'feature/newapi',
+          'group-store' => 'register',
+          'user-store' => 'register',
           'datacenter-store' => 'feature/newapi',
           'service-store' => 'feature/newapi',
           'definition-mapper' => 'feature/newapi',
