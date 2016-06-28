@@ -5,7 +5,6 @@
 require 'socket'
 require 'json'
 
-hostname = Socket.gethostname
 ip_address = Socket.ip_address_list.find { |ai| ai.ipv4? && !ai.ipv4_loopback? }.ip_address
 version = File.open('VERSION', 'rb').read.strip
 
@@ -14,8 +13,7 @@ j = {
   'server' => {
     'user'     => 'ernest',
     'group'    => 'ernest',
-    'host_ip'  => ip_address,
-    'hostname' => hostname
+    'host_ip'  => ip_address
   },
   'ernest' => {
     'version' => version
