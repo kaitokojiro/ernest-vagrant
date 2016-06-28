@@ -13,46 +13,49 @@ ruby_block 'create group and user' do
 
     def add_user
       Chef::Log.info('Admin user added')
-      NATS.publish('user.set', {
+
+      user = {
         'group_id' => 1,
         'username' => 'admin',
         'password' => node['ernest']['application']['user_password'],
         'admin' => true
-      }.to_json)
+      }
+
+      NATS.request('user.set', user.to_json) do |msg|
+        Chef::Log.info(msg)
+        @ready << :user
+        shutdown
+      end
     end
 
     def add_group
       Chef::Log.info('Admin group added')
-      NATS.publish('group.set', '{"name": "admin"}')
+
+      NATS.request('group.set', '{"name": "admin"}') do |msg|
+        Chef::Log.info(msg)
+        @ready << :group
+        shutdown
+      end
+    end
+
+    def shutdown
+      NATS.flush
+      sleep 1
+      NATS.stop if @ready.include?(:user) && @ready.include?(:group)
     end
 
     NATS.on_error { |err| puts "Server Error: #{err}" }
 
     NATS.start(uri: node['nats']['url'], autostart: true) do
-      gf = NATS.request('group.find') do |msg|
-        @ready << :group
-        add_group unless msg.include? 'admin'
-        NATS.stop if @ready.include?(:user) && @ready.include?(:group)
-      end
+      gf = NATS.request('group.find') { |msg| add_group unless msg.include? 'admin' }
       NATS.timeout(gf, 5, expected: 1) { Chef::Log.info('Group store not ready') }
 
-      uf = NATS.request('user.find') do |msg|
-        @ready << :user
-        add_user unless msg.include? 'admin'
-        NATS.stop if @ready.include?(:user) && @ready.include?(:group)
-      end
+      uf = NATS.request('user.find') { |msg| add_user unless msg.include? 'admin' }
       NATS.timeout(uf, 5, expected: 1) { Chef::Log.info('User store not ready') }
 
       rs = NATS.subscribe('register') do |msg|
-        if msg.include? 'group-store'
-          @ready << :group
-          add_group
-        end
-        if msg.include? 'user-store'
-          @ready << :user
-          add_user
-        end
-        NATS.stop if @ready.include?(:user) && @ready.include?(:group)
+        add_group if msg.include? 'group-store'
+        add_user if msg.include? 'user-store'
       end
 
       NATS.timeout(rs, 120) { Chef::Application.fatal!('Could not register admin user and group') }
