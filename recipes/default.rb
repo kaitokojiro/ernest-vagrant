@@ -39,5 +39,6 @@ include_recipe 'ernest-vagrant::vcloud_microservices'
 include_recipe 'ernest-vagrant::gpb_microservices'
 
 include_recipe 'ernest-vagrant::ernest'
+include_recipe 'ernest-vagrant::admin'
 
 include_recipe 'ernest-vagrant::user'
