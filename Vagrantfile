@@ -35,7 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           'service-store' => 'feature/newapi',
           'definition-mapper' => 'feature/newapi',
           'workflow-manager' => 'feature/newapi',
-          'api-gateway' => 'master',,
+          'api-gateway' => 'master',
           'monit' => 'jwt'
         }
       }
