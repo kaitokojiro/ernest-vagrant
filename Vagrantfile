@@ -26,20 +26,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision 'chef_solo' do |chef|
     # chef.log_level = :debug
     chef.add_recipe 'ernest-vagrant'
-    chef.json = {
-      'ernest' => {
-        'versions' => {
-          'group-store' => 'register',
-          'user-store' => 'register',
-          'datacenter-store' => 'feature/newapi',
-          'service-store' => 'feature/newapi',
-          'definition-mapper' => 'feature/newapi',
-          'workflow-manager' => 'feature/newapi',
-          'api-gateway' => 'master',
-          'monit' => 'jwt'
-        }
-      }
-    }
     #  chef.json = {
     #    "ernest" => {
     #      "version" => "develop",
