@@ -32,8 +32,6 @@ include_recipe 'ernest-vagrant::salt'
 
 include_recipe 'ernest-vagrant::config_store'
 
-include_recipe 'ernest-vagrant::data_microservices'
-
 include_recipe 'ernest-vagrant::vcloud_microservices'
 
 include_recipe 'ernest-vagrant::gpb_microservices'

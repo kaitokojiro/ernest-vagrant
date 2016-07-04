@@ -29,13 +29,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #  chef.json = {
     #    "ernest" => {
     #      "version" => "develop",
-    #      "versions" => {
-    #        "workflow-manager" => "branch-name",
-    #      }
-    #      "application" => {
-    #        "repos" => {
-    #           "workflow-manager" => "git@github.com:org/repo-name.git"
-    #        }
+    #      "services" => {
+    #       "gpb" => {
+    #        "workflow-manager" => {org: "ernestio", version: "branch-name"},
+    #       }
     #      }
     #    }
     #  }

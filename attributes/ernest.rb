@@ -29,31 +29,47 @@ default['ernest']['application']['user_email']    = node['secrets']['ernest']['a
 default['ernest']['application']['user_password'] = node['secrets']['ernest']['admin_password']
 default['ernest']['application']['user_salt']     = node['secrets']['ernest']['admin_salt']
 
-default['ernest']['services']['gpb'] = ['nat-builder', 'firewall-builder',
-                                        'instance-builder', 'network-builder',
-                                        'router-builder', 'execution-builder',
-                                        'workflow-manager', 'definition-mapper',
-                                        'router-adapter', 'nat-adapter', 'network-adapter', 'instance-adapter',
-                                        'firewall-adapter', 'execution-adapter', 'all-all-fake-connector',
-                                        'monit', 'logger']
+default['ernest']['services']['gpb'] = {
+  'nat-builder' => { org: 'ernestio', version: node['ernest']['version'] },
+  'firewall-builder' => { org: 'ernestio', version: node['ernest']['version'] },
+  'instance-builder' => { org: 'ernestio', version: node['ernest']['version'] },
+  'network-builder' => { org: 'ernestio', version: node['ernest']['version'] },
+  'router-builder' => { org: 'ernestio', version: node['ernest']['version'] },
+  'execution-builder' => { org: 'ernestio', version: node['ernest']['version'] },
+  'workflow-manager' => { org: 'ernestio', version: node['ernest']['version'] },
+  'definition-mapper' => { org: 'ernestio', version: node['ernest']['version'] },
+  'router-adapter' => { org: 'ernestio', version: node['ernest']['version'] },
+  'nat-adapter' => { org: 'ernestio', version: node['ernest']['version'] },
+  'network-adapter' => { org: 'ernestio', version: node['ernest']['version'] },
+  'instance-adapter' => { org: 'ernestio', version: node['ernest']['version'] },
+  'firewall-adapter' => { org: 'ernestio', version: node['ernest']['version'] },
+  'execution-adapter' => { org: 'ernestio', version: node['ernest']['version'] },
+  'all-all-fake-connector' => { org: 'ernestio', version: node['ernest']['version'] },
+  'monit' => { org: 'ernestio', version: node['ernest']['version'] },
+  'logger' => { org: 'ernestio', version: node['ernest']['version'] },
+  'group-store' => { org: 'ernestio', version: node['ernest']['version'] },
+  'user-store' => { org: 'ernestio', version: node['ernest']['version'] },
+  'datacenter-store' =>  { org: 'ernestio', version: node['ernest']['version'] },
+  'service-store' => { org: 'ernestio', version: node['ernest']['version'] },
+  'api-gateway' => { org: 'ernestio', version: node['ernest']['version'] }
+}
 
-default['ernest']['services']['vcloud'] = ['firewall-creator-vcloud-connector', 'instance-creator-vcloud-connector',
-                                           'instance-updater-vcloud-connector', 'execution-run-salt-connector',
-                                           'nat-creator-vcloud-connector', 'network-creator-vcloud-connector',
-                                           'router-creator-vcloud-connector', 'instance-deleter-vcloud-connector',
-                                           'firewall-updater-vcloud-connector', 'nat-updater-vcloud-connector',
-                                           'router-deleter-vcloud-connector', 'network-deleter-vcloud-connector']
+default['ernest']['services']['vcloud'] = {
+  'firewall-creator-vcloud-connector' => { org: 'ernestio', version: node['ernest']['version'] },
+  'instance-creator-vcloud-connector' => { org: 'ernestio', version: node['ernest']['version'] },
+  'instance-updater-vcloud-connector' => { org: 'ernestio', version: node['ernest']['version'] },
+  'execution-run-salt-connector' => { org: 'ernestio', version: node['ernest']['version'] },
+  'nat-creator-vcloud-connector' => { org: 'ernestio', version: node['ernest']['version'] },
+  'network-creator-vcloud-connector' => { org: 'ernestio', version: node['ernest']['version'] },
+  'router-creator-vcloud-connector' => { org: 'ernestio', version: node['ernest']['version'] },
+  'instance-deleter-vcloud-connector' => { org: 'ernestio', version: node['ernest']['version'] },
+  'firewall-updater-vcloud-connector' => { org: 'ernestio', version: node['ernest']['version'] },
+  'nat-updater-vcloud-connector' => { org: 'ernestio', version: node['ernest']['version'] },
+  'router-deleter-vcloud-connector' => { org: 'ernestio', version: node['ernest']['version'] },
+  'network-deleter-vcloud-connector' => { org: 'ernestio', version: node['ernest']['version'] }
+}
 
-=begin
-default['ernest']['services']['data'] = ['user-store', 'service-store',
-                                         'datacenter-store', 'client-store']
-=end
-
-default['ernest']['services']['data'] = ['group-store', 'user-store', 'datacenter-store', 'service-store', 'api-gateway']
-
-default['ernest']['services']['all'] = default['ernest']['services']['gpb'] +
-                                       default['ernest']['services']['vcloud'] +
-                                       default['ernest']['services']['data']
+default['ernest']['services']['all'] = default['ernest']['services']['gpb'].merge(default['ernest']['services']['vcloud'])
 
 default['ernest']['connectors']['routers'] = %w(fake vcloud)
 default['ernest']['connectors']['networks'] = %w(fake vcloud)

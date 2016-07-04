@@ -2,33 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-node['ernest']['services']['data'].each do |microservice|
-  template "/lib/systemd/system/#{microservice}.service" do # ~FC033
-    source 'data-microservice.service.erb'
-    owner 'root'
-    group 'root'
-    mode '0644'
-    action :create
-    variables(
-      lazy do
-        {
-          organization: node['ernest']['organization'],
-          name: microservice,
-          user: node['server']['user'],
-          env: node['ernest']['environment'],
-          natsuri: node['nats']['url']
-        }
-      end
-    )
-  end
-
-  service microservice do
-    supports [:start, :stop, :restart]
-    action [:enable, :start]
-  end
-end
-
-node['ernest']['services']['vcloud'].each do |microservice|
+node['ernest']['services']['vcloud'].each do |microservice, _attrs|
   template "/lib/systemd/system/#{microservice}.service" do # ~FC033
     source 'vcloud-microservice.service.erb'
     owner 'root'
@@ -54,7 +28,7 @@ node['ernest']['services']['vcloud'].each do |microservice|
   end
 end
 
-node['ernest']['services']['gpb'].each do |microservice|
+node['ernest']['services']['gpb'].each do |microservice, attrs|
   next if ['vcloud-fakery'].include? microservice
 
   template "/lib/systemd/system/#{microservice}.service" do # ~FC033
@@ -66,7 +40,7 @@ node['ernest']['services']['gpb'].each do |microservice|
     variables(
       lazy do
         {
-          organization: node['ernest']['organization'],
+          organization: attrs[:org],
           name: microservice,
           user: node['server']['user'],
           natsuri: node['nats']['url']
@@ -89,7 +63,6 @@ template '/usr/local/bin/ernestctl' do # ~FC033
   action :create
   variables(
     gpb: node['ernest']['services']['gpb'],
-    data: node['ernest']['services']['data'],
     vcloud: node['ernest']['services']['vcloud']
   )
 end
