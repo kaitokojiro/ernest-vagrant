@@ -56,3 +56,7 @@ service 'postgres' do
   supports [:start, :stop, :restart]
   action [:enable, :start]
 end
+
+bash 'install psql' do
+  code 'apt-get install -q -y postgresql-client'
+end

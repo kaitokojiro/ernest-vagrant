@@ -27,11 +27,10 @@ BWhite='\033[1;37m'       # White
 # Services
 supporting=( nats redis postgres )
 logging=( elasticsearch logstash kibana )
-gpb=( <%= @gpb.join(' ') %> )
-data=( <%= @data.join(' ') %> )
-vcloud=( <%= @vcloud.join(' ') %> )
+gpb=( <%= @gpb.keys.join(' ') %> )
+vcloud=( <%= @vcloud.keys.join(' ') %> )
 
-all=( supporting logging gpb data vcloud )
+all=( supporting logging gpb vcloud )
 
 function checkservice {
     systemctl status $1 > /dev/null 2>&1
