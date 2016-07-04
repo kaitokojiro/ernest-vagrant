@@ -21,8 +21,8 @@ default['ernest']['environments'] = %w(dev test staging)
 default['ernest']['application']['repos'] = {}
 
 default['ernest']['application']['service_url']   = "http://#{node['server']['hostname']}"
-default['ernest']['application']['client_id']     = SecureRandom.uuid
-default['ernest']['application']['user_id']       = SecureRandom.uuid
+default['ernest']['application']['client_id']     = 1
+default['ernest']['application']['user_id']       = 1
 default['ernest']['application']['client_name']   = node['secrets']['ernest']['client_name']
 default['ernest']['application']['user_name']     = node['secrets']['ernest']['admin_username']
 default['ernest']['application']['user_email']    = node['secrets']['ernest']['admin_email']
@@ -44,8 +44,12 @@ default['ernest']['services']['vcloud'] = ['firewall-creator-vcloud-connector', 
                                            'firewall-updater-vcloud-connector', 'nat-updater-vcloud-connector',
                                            'router-deleter-vcloud-connector', 'network-deleter-vcloud-connector']
 
+=begin
 default['ernest']['services']['data'] = ['user-store', 'service-store',
                                          'datacenter-store', 'client-store']
+=end
+
+default['ernest']['services']['data'] = ['group-store', 'user-store', 'datacenter-store', 'service-store', 'api-gateway']
 
 default['ernest']['services']['all'] = default['ernest']['services']['gpb'] +
                                        default['ernest']['services']['vcloud'] +

@@ -11,3 +11,6 @@ export RACK_ENV=production
 <% end %>
 
 export NATS_URI=<%= @nats_uri %>
+<% if ['dev', 'test'].include? @env %>
+export NATS_URI_TEST=<%= @nats_uri_test %>
+<% end %>

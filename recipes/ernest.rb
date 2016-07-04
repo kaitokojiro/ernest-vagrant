@@ -2,10 +2,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-rack_env = 'production'
-rack_env = 'test' if node['ernest']['environment'] == 'test'
-rack_env = 'development' if node['ernest']['environment'] == 'dev'
-
 node['ernest']['services']['data'].each do |microservice|
   template "/lib/systemd/system/#{microservice}.service" do # ~FC033
     source 'data-microservice.service.erb'
@@ -20,7 +16,6 @@ node['ernest']['services']['data'].each do |microservice|
           name: microservice,
           user: node['server']['user'],
           env: node['ernest']['environment'],
-          rackenv: rack_env,
           natsuri: node['nats']['url']
         }
       end
