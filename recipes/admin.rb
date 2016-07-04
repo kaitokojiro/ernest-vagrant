@@ -2,7 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-ernest_path = "/opt/go/src/github.com/r3labs"
+ernest_path = '/opt/go/src/github.com/r3labs'
 
 directory ernest_path do
   owner node['server']['user']
@@ -14,7 +14,7 @@ end
 git "#{ernest_path}/natsc" do
   user node['server']['user']
   group node['server']['group']
-  repository "git@github.com:r3labs/natsc.git"
+  repository 'git@github.com:r3labs/natsc.git'
   revision 'master'
   action :sync
 end
