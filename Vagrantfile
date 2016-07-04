@@ -25,16 +25,25 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision 'chef_solo' do |chef|
     # chef.log_level = :debug
+    #
     chef.add_recipe 'ernest-vagrant'
-    #  chef.json = {
-    #    "ernest" => {
-    #      "version" => "develop",
-    #      "services" => {
-    #       "gpb" => {
-    #        "workflow-manager" => {org: "ernestio", version: "branch-name"},
-    #       }
-    #      }
-    #    }
-    #  }
+    chef.json = {
+      'ernest' => {
+        'version' => 'develop',
+        'services' => {
+          'gpb' => {
+            'network-creator-aws-connector' => { org: 'r3labs', version: 'master' },
+            'network-deleter-aws-connector' => { org: 'r3labs', version: 'master' },
+            'firewall-creator-aws-connector' => { org: 'r3labs', version: 'master' },
+            'firewall-updater-aws-connector' => { org: 'r3labs', version: 'master' },
+            'nat-creator-aws-connector' => { org: 'r3labs', version: 'master' },
+            'nat-updater-aws-connector' => { org: 'r3labs', version: 'master' },
+            'instance-creator-aws-connector' => { org: 'r3labs', version: 'master' },
+            'instance-updater-aws-connector' => { org: 'r3labs', version: 'master' },
+            'instance-deleter-aws-connector' => { org: 'r3labs', version: 'master' }
+          }
+        }
+      }
+    }
   end
 end

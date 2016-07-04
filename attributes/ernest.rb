@@ -51,7 +51,18 @@ default['ernest']['services']['gpb'] = {
   'user-store' => { org: 'ernestio', version: node['ernest']['version'] },
   'datacenter-store' =>  { org: 'ernestio', version: node['ernest']['version'] },
   'service-store' => { org: 'ernestio', version: node['ernest']['version'] },
-  'api-gateway' => { org: 'ernestio', version: node['ernest']['version'] }
+  'api-gateway' => { org: 'ernestio', version: node['ernest']['version'] },
+  'aws-definition-mapper' => { org: 'r3labs', version: node['ernest']['version'] },
+  'vcloud-definition-mapper' => { org: 'r3labs', version: node['ernest']['version'] },
+  'network-creator-aws-connector' => { org: 'r3labs', version: node['ernest']['version'] },
+  'network-deleter-aws-connector' => { org: 'r3labs', version: node['ernest']['version'] },
+  'firewall-creator-aws-connector' => { org: 'r3labs', version: node['ernest']['version'] },
+  'firewall-updater-aws-connector' => { org: 'r3labs', version: node['ernest']['version'] },
+  'nat-creator-aws-connector' => { org: 'r3labs', version: node['ernest']['version'] },
+  'nat-updater-aws-connector' => { org: 'r3labs', version: node['ernest']['version'] },
+  'instance-creator-aws-connector' => { org: 'r3labs', version: node['ernest']['version'] },
+  'instance-updater-aws-connector' => { org: 'r3labs', version: node['ernest']['version'] },
+  'instance-deleter-aws-connector' => { org: 'r3labs', version: node['ernest']['version'] }
 }
 
 default['ernest']['services']['vcloud'] = {
