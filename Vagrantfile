@@ -7,6 +7,8 @@
 
 VAGRANTFILE_API_VERSION = '2'.freeze
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.ssh.forward_agent = true
+
   config.vm.box = 'ubuntu/wily64'
   # config.vm.box = 'flow-basebox'
   # config.vm.box_url = 'http://artefact.r3labs.io/boxes/flow-basebox-1.3.0.box'
@@ -32,15 +34,30 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         'version' => 'develop',
         'services' => {
           'gpb' => {
-            'network-creator-aws-connector' => { org: 'r3labs', version: 'master' },
-            'network-deleter-aws-connector' => { org: 'r3labs', version: 'master' },
-            'firewall-creator-aws-connector' => { org: 'r3labs', version: 'master' },
-            'firewall-updater-aws-connector' => { org: 'r3labs', version: 'master' },
-            'nat-creator-aws-connector' => { org: 'r3labs', version: 'master' },
-            'nat-updater-aws-connector' => { org: 'r3labs', version: 'master' },
-            'instance-creator-aws-connector' => { org: 'r3labs', version: 'master' },
-            'instance-updater-aws-connector' => { org: 'r3labs', version: 'master' },
-            'instance-deleter-aws-connector' => { org: 'r3labs', version: 'master' }
+            'network-creator-aws-connector' => { org: 'r3labs', version: 'aws' },
+            'network-deleter-aws-connector' => { org: 'r3labs', version: 'aws' },
+            'firewall-creator-aws-connector' => { org: 'r3labs', version: 'aws' },
+            'firewall-updater-aws-connector' => { org: 'r3labs', version: 'aws' },
+            'nat-creator-aws-connector' => { org: 'r3labs', version: 'aws' },
+            'nat-deleter-aws-connector' => { org: 'r3labs', version: 'aws' },
+            'instance-creator-aws-connector' => { org: 'r3labs', version: 'aws' },
+            'instance-updater-aws-connector' => { org: 'r3labs', version: 'aws' },
+            'instance-deleter-aws-connector' => { org: 'r3labs', version: 'aws' },
+
+            'router-builder' => { org: 'r3labs', version: 'aws' },
+            'router-adapter' => { org: 'r3labs', version: 'aws' },
+            'network-builder' => { org: 'r3labs', version: 'aws' },
+            'network-adapter' => { org: 'r3labs', version: 'aws' },
+            'instance-builder' => { org: 'r3labs', version: 'aws' },
+            'instance-adapter' => { org: 'r3labs', version: 'aws' },
+            'firewall-builder' => { org: 'r3labs', version: 'aws' },
+            'firewall-adapter' => { org: 'r3labs', version: 'aws' },
+            'nat-builder' => { org: 'r3labs', version: 'aws' },
+            'nat-adapter' => { org: 'r3labs', version: 'aws' },
+            'execution-builder' => { org: 'r3labs', version: 'aws' },
+            'execution-adapter' => { org: 'r3labs', version: 'aws' },
+
+            'workflow-manager' => { org: 'r3labs', version: 'aws' }
           }
         }
       }
