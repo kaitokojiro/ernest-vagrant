@@ -28,11 +28,17 @@ node['ernest']['services']['vcloud'].each do |microservice, _attrs|
   end
 end
 
+stores = ['group-store', 'user-store', 'datacenter-store', 'service-store']
+
 node['ernest']['services']['gpb'].each do |microservice, attrs|
   next if ['vcloud-fakery'].include? microservice
 
   template "/lib/systemd/system/#{microservice}.service" do # ~FC033
-    source 'gpb-microservice.service.erb'
+    if stores.include? microservice
+      source 'store-microservice.service.erb'
+    else
+      source 'gpb-microservice.service.erb'
+    end
     owner 'root'
     group 'root'
     mode '0644'
