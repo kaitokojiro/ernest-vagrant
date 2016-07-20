@@ -57,7 +57,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             'execution-builder' => { org: 'r3labs', version: 'aws' },
             'execution-adapter' => { org: 'r3labs', version: 'aws' },
 
-            'workflow-manager' => { org: 'r3labs', version: 'aws' }
+            'workflow-manager' => { org: 'r3labs', version: 'aws' },
+            'all-all-fake-connector' => { org: 'r3labs', version: 'aws' }
           }
         }
       }
