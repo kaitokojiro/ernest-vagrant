@@ -26,7 +26,6 @@ include_recipe 'ernest-vagrant::jruby'
 
 include_recipe 'ernest-vagrant::basic_gems'
 
-include_recipe 'ernest-vagrant::authentication_middleware'
 include_recipe 'ernest-vagrant::myst'
 include_recipe 'ernest-vagrant::salt'
 
