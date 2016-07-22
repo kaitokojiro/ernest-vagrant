@@ -1,15 +1,6 @@
 # Ernest environment
 export ERNEST_ENV=<%= @env %>
 
-# Rack environment
-<% if @env == 'dev' %>
-export RACK_ENV=development
-<% elsif @env == 'test' %>
-export RACK_ENV=test
-<% else %>
-export RACK_ENV=production
-<% end %>
-
 export NATS_URI=<%= @nats_uri %>
 <% if ['dev', 'test'].include? @env %>
 export NATS_URI_TEST=<%= @nats_uri_test %>
