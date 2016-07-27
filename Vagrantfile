@@ -61,6 +61,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             'execution-adapter' => { org: 'r3labs', version: 'aws' },
 
             'workflow-manager' => { org: 'r3labs', version: 'aws' },
+            'definition-mapper' => { org: 'r3labs', version: 'aws' },
+            'vcloud-definition-mapper' => { org: 'r3labs', version: 'hackyaws' },
+
             'all-all-fake-connector' => { org: 'r3labs', version: 'aws' }
           }
         }
