@@ -44,8 +44,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             'instance-updater-aws-connector' => { org: 'r3labs', version: 'aws' },
             'instance-deleter-aws-connector' => { org: 'r3labs', version: 'aws' },
 
-            'datacenter-store' => { org: 'r3labs', version: 'aws'},
-            'api-gateway' => { org: 'r3labs', version: 'aws'},
+            'datacenter-store' => { org: 'r3labs', version: 'aws' },
+            'api-gateway' => { org: 'r3labs', version: 'aws' },
 
             'router-builder' => { org: 'r3labs', version: 'aws' },
             'router-adapter' => { org: 'r3labs', version: 'aws' },
