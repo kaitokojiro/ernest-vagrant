@@ -82,9 +82,9 @@ default['ernest']['services']['vcloud'] = {
 
 default['ernest']['services']['all'] = default['ernest']['services']['gpb'].merge(default['ernest']['services']['vcloud'])
 
-default['ernest']['connectors']['routers'] = %w(fake vcloud fake-vcloud aws fake-aws)
-default['ernest']['connectors']['networks'] = %w(fake vcloud fake-vcloud aws fake-aws)
-default['ernest']['connectors']['instances'] = %w(fake vcloud fake-vcloud aws fake-aws)
-default['ernest']['connectors']['firewalls'] = %w(fake vcloud fake-vcloud aws fake-aws)
-default['ernest']['connectors']['nats'] = %w(fake vcloud fake-vcloud aws fake-aws)
+default['ernest']['connectors']['routers'] = %w(fake vcloud vcloud-fake aws aws-fake)
+default['ernest']['connectors']['networks'] = %w(fake vcloud vcloud-fake aws aws-fake)
+default['ernest']['connectors']['instances'] = %w(fake vcloud vcloud-fake aws aws-fake)
+default['ernest']['connectors']['firewalls'] = %w(fake vcloud vcloud-fake aws aws-fake)
+default['ernest']['connectors']['nats'] = %w(fake vcloud vcloud-fake aws aws-fake)
 default['ernest']['connectors']['executions'] = %w(fake salt)
