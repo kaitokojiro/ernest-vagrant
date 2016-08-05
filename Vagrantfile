@@ -62,7 +62,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
             'workflow-manager' => { org: 'r3labs', version: 'aws' },
             'definition-mapper' => { org: 'r3labs', version: 'aws' },
-            'vcloud-definition-mapper' => { org: 'r3labs', version: 'hackyaws' },
+            'vcloud-definition-mapper' => { org: 'r3labs', version: 'aws' },
+            'aws-definition-mapper' => { org: 'r3labs', version: 'aws' },
 
             'all-all-fake-connector' => { org: 'r3labs', version: 'aws' }
           }

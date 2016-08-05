@@ -54,6 +54,7 @@ default['ernest']['services']['gpb'] = {
   'api-gateway' => { org: 'ernestio', version: node['ernest']['version'] },
   'aws-definition-mapper' => { org: 'r3labs', version: node['ernest']['version'] },
   'vcloud-definition-mapper' => { org: 'r3labs', version: node['ernest']['version'] },
+  'aws-definition-mapper' => { org: 'r3labs', version: node['ernest']['version'] },
   'network-creator-aws-connector' => { org: 'r3labs', version: node['ernest']['version'] },
   'network-deleter-aws-connector' => { org: 'r3labs', version: node['ernest']['version'] },
   'firewall-creator-aws-connector' => { org: 'r3labs', version: node['ernest']['version'] },
