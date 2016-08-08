@@ -31,6 +31,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe 'ernest-vagrant'
     chef.json = {
       'ernest' => {
+        'uat' => {
+          'uat-agent' => { org: 'r3labs', version: 'aws' },
+          'ernest-cli' => { org: 'r3labs', version: 'aws' }
+        },
         'version' => 'develop',
         'services' => {
           'gpb' => {
