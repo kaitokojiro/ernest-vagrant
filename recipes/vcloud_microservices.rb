@@ -2,6 +2,11 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+deps = 'make deps'
+if %w(dev test).include? node['ernest']['environment']
+  deps = 'make dev-deps || true && make deps'
+end
+
 ruby_based = ['router-creator-vcloud-connector', 'router-deleter-vcloud-connector', 'execution-run-salt-connector']
 
 directory '/opt/ernest' do
@@ -31,7 +36,7 @@ node['ernest']['services']['vcloud'].each do |name, attrs|
   end
 
   execute "Build service #{name}" do
-    command "su #{node['server']['user']} -l -c 'git config --global url.\"git@github.com:\".insteadOf \"https://github.com/\" && cd /opt/ernest/#{name} && make deps'"
+    command "su #{node['server']['user']} -l -c 'git config --global url.\"git@github.com:\".insteadOf \"https://github.com/\" && cd /opt/ernest/#{name} && #{deps}'"
     action :run
   end
 end

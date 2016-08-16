@@ -2,6 +2,11 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+deps = 'make deps'
+if %w(dev test).include? node['ernest']['environment']
+  deps = 'make dev-deps || true && make deps'
+end
+
 repo_version = node['ernest']['versions']['config-store']
 rev = repo_version.nil? ? node['ernest']['version'] : repo_version
 
@@ -46,7 +51,7 @@ git "/opt/go/src/github.com/#{node['ernest']['organization']}/config-store" do
 end
 
 execute 'install config-store' do
-  command "su #{node['server']['user']} -l -c \"cd /opt/go/src/github.com/#{node['ernest']['organization']}/config-store && make deps && make install\""
+  command "su #{node['server']['user']} -l -c \"cd /opt/go/src/github.com/#{node['ernest']['organization']}/config-store && #{deps} && make install\""
   action :run
 end
 
