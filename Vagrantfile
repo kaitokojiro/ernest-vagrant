@@ -42,6 +42,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             'network-deleter-aws-connector' => { org: 'r3labs', version: 'aws' },
             'firewall-creator-aws-connector' => { org: 'r3labs', version: 'aws' },
             'firewall-updater-aws-connector' => { org: 'r3labs', version: 'aws' },
+            'firewall-deleter-aws-connector' => { org: 'r3labs', version: 'aws' },
             'nat-creator-aws-connector' => { org: 'r3labs', version: 'aws' },
             'nat-deleter-aws-connector' => { org: 'r3labs', version: 'aws' },
             'instance-creator-aws-connector' => { org: 'r3labs', version: 'aws' },
