@@ -58,6 +58,7 @@ default['ernest']['services']['gpb'] = {
   'network-deleter-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
   'firewall-creator-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
   'firewall-updater-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
+  'firewall-deleter-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
   'nat-creator-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
   'nat-deleter-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
   'instance-creator-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
