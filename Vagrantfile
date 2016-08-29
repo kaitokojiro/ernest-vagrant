@@ -31,46 +31,31 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe 'ernest-vagrant'
     chef.json = {
       'ernest' => {
-        'uat' => {
-          'uat-agent' => { org: 'r3labs', version: 'aws' },
-          'ernest-cli' => { org: 'r3labs', version: 'aws' }
-        },
         'version' => 'develop',
         'services' => {
           'gpb' => {
-            'network-creator-aws-connector' => { org: 'r3labs', version: 'aws' },
-            'network-deleter-aws-connector' => { org: 'r3labs', version: 'aws' },
-            'firewall-creator-aws-connector' => { org: 'r3labs', version: 'aws' },
-            'firewall-updater-aws-connector' => { org: 'r3labs', version: 'aws' },
-            'firewall-deleter-aws-connector' => { org: 'r3labs', version: 'aws' },
-            'nat-creator-aws-connector' => { org: 'r3labs', version: 'aws' },
-            'nat-deleter-aws-connector' => { org: 'r3labs', version: 'aws' },
-            'instance-creator-aws-connector' => { org: 'r3labs', version: 'aws' },
-            'instance-updater-aws-connector' => { org: 'r3labs', version: 'aws' },
-            'instance-deleter-aws-connector' => { org: 'r3labs', version: 'aws' },
+            'datacenter-store' => { org: 'ernestio', version: 'aws' },
+            'api-gateway' => { org: 'ernestio', version: 'aws' },
 
-            'datacenter-store' => { org: 'r3labs', version: 'aws' },
-            'api-gateway' => { org: 'r3labs', version: 'aws' },
+            'router-builder' => { org: 'ernestio', version: 'aws' },
+            'router-adapter' => { org: 'ernestio', version: 'aws' },
+            'network-builder' => { org: 'ernestio', version: 'aws' },
+            'network-adapter' => { org: 'ernestio', version: 'aws' },
+            'instance-builder' => { org: 'ernestio', version: 'aws' },
+            'instance-adapter' => { org: 'ernestio', version: 'aws' },
+            'firewall-builder' => { org: 'ernestio', version: 'aws' },
+            'firewall-adapter' => { org: 'ernestio', version: 'aws' },
+            'nat-builder' => { org: 'ernestio', version: 'aws' },
+            'nat-adapter' => { org: 'ernestio', version: 'aws' },
+            'execution-builder' => { org: 'ernestio', version: 'aws' },
+            'execution-adapter' => { org: 'ernestio', version: 'aws' },
 
-            'router-builder' => { org: 'r3labs', version: 'aws' },
-            'router-adapter' => { org: 'r3labs', version: 'aws' },
-            'network-builder' => { org: 'r3labs', version: 'aws' },
-            'network-adapter' => { org: 'r3labs', version: 'aws' },
-            'instance-builder' => { org: 'r3labs', version: 'aws' },
-            'instance-adapter' => { org: 'r3labs', version: 'aws' },
-            'firewall-builder' => { org: 'r3labs', version: 'aws' },
-            'firewall-adapter' => { org: 'r3labs', version: 'aws' },
-            'nat-builder' => { org: 'r3labs', version: 'aws' },
-            'nat-adapter' => { org: 'r3labs', version: 'aws' },
-            'execution-builder' => { org: 'r3labs', version: 'aws' },
-            'execution-adapter' => { org: 'r3labs', version: 'aws' },
+            'workflow-manager' => { org: 'ernestio', version: 'aws' },
+            'definition-mapper' => { org: 'ernestio', version: 'aws' },
+            'vcloud-definition-mapper' => { org: 'ernestio', version: 'develop' },
+            'aws-definition-mapper' => { org: 'ernestio', version: 'develop' },
 
-            'workflow-manager' => { org: 'r3labs', version: 'aws' },
-            'definition-mapper' => { org: 'r3labs', version: 'aws' },
-            'vcloud-definition-mapper' => { org: 'r3labs', version: 'aws' },
-            'aws-definition-mapper' => { org: 'r3labs', version: 'aws' },
-
-            'all-all-fake-connector' => { org: 'r3labs', version: 'aws' }
+            'all-all-fake-connector' => { org: 'ernestio', version: 'aws' }
           }
         }
       }
