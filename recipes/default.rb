@@ -39,3 +39,7 @@ include_recipe 'ernest-vagrant::ernest'
 include_recipe 'ernest-vagrant::admin'
 
 include_recipe 'ernest-vagrant::user'
+
+if %w(dev test).include? node['ernest']['environment']
+  include_recipe 'ernest-vagrant::uat'
+end

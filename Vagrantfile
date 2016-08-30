@@ -7,6 +7,8 @@
 
 VAGRANTFILE_API_VERSION = '2'.freeze
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.ssh.forward_agent = true
+
   config.vm.box = 'ubuntu/wily64'
   # config.vm.box = 'flow-basebox'
   # config.vm.box_url = 'http://artefact.r3labs.io/boxes/flow-basebox-1.3.0.box'
@@ -25,16 +27,43 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision 'chef_solo' do |chef|
     # chef.log_level = :debug
+    #
     chef.add_recipe 'ernest-vagrant'
-    #  chef.json = {
-    #    "ernest" => {
-    #      "version" => "develop",
-    #      "services" => {
-    #       "gpb" => {
-    #        "workflow-manager" => {org: "ernestio", version: "branch-name"},
-    #       }
-    #      }
-    #    }
-    #  }
+    chef.json = {
+      'ernest' => {
+        'version' => 'develop',
+=begin
+        'uat' => {
+          'ernest-cli' => { org: 'ErnestIO', version: 'aws' }
+        },
+        'services' => {
+          'gpb' => {
+            'datacenter-store' => { org: 'ErnestIO', version: 'aws' },
+            'api-gateway' => { org: 'ErnestIO', version: 'aws' },
+
+            'router-builder' => { org: 'ErnestIO', version: 'aws' },
+            'router-adapter' => { org: 'ErnestIO', version: 'aws' },
+            'network-builder' => { org: 'ErnestIO', version: 'aws' },
+            'network-adapter' => { org: 'ErnestIO', version: 'aws' },
+            'instance-builder' => { org: 'ErnestIO', version: 'aws' },
+            'instance-adapter' => { org: 'ErnestIO', version: 'aws' },
+            'firewall-builder' => { org: 'ErnestIO', version: 'aws' },
+            'firewall-adapter' => { org: 'ErnestIO', version: 'aws' },
+            'nat-builder' => { org: 'ErnestIO', version: 'aws' },
+            'nat-adapter' => { org: 'ErnestIO', version: 'aws' },
+            'execution-builder' => { org: 'ErnestIO', version: 'aws' },
+            'execution-adapter' => { org: 'ErnestIO', version: 'aws' },
+
+            'workflow-manager' => { org: 'ErnestIO', version: 'aws' },
+            'definition-mapper' => { org: 'ErnestIO', version: 'aws' },
+            'vcloud-definition-mapper' => { org: 'ErnestIO', version: 'develop' },
+            'aws-definition-mapper' => { org: 'ErnestIO', version: 'develop' },
+
+            'all-all-fake-connector' => { org: 'ErnestIO', version: 'aws' }
+          }
+        }
+=end
+      }
+    }
   end
 end
