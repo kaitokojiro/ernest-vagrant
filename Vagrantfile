@@ -31,31 +31,34 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe 'ernest-vagrant'
     chef.json = {
       'ernest' => {
+        'uat' => {
+          'ernest-cli' => { org: 'ErnestIO', version: 'aws' }
+         },
         'version' => 'develop',
         'services' => {
           'gpb' => {
-            'datacenter-store' => { org: 'ernestio', version: 'aws' },
-            'api-gateway' => { org: 'ernestio', version: 'aws' },
+            'datacenter-store' => { org: 'ErnestIO', version: 'aws' },
+            'api-gateway' => { org: 'ErnestIO', version: 'aws' },
 
-            'router-builder' => { org: 'ernestio', version: 'aws' },
-            'router-adapter' => { org: 'ernestio', version: 'aws' },
-            'network-builder' => { org: 'ernestio', version: 'aws' },
-            'network-adapter' => { org: 'ernestio', version: 'aws' },
-            'instance-builder' => { org: 'ernestio', version: 'aws' },
-            'instance-adapter' => { org: 'ernestio', version: 'aws' },
-            'firewall-builder' => { org: 'ernestio', version: 'aws' },
-            'firewall-adapter' => { org: 'ernestio', version: 'aws' },
-            'nat-builder' => { org: 'ernestio', version: 'aws' },
-            'nat-adapter' => { org: 'ernestio', version: 'aws' },
-            'execution-builder' => { org: 'ernestio', version: 'aws' },
-            'execution-adapter' => { org: 'ernestio', version: 'aws' },
+            'router-builder' => { org: 'ErnestIO', version: 'aws' },
+            'router-adapter' => { org: 'ErnestIO', version: 'aws' },
+            'network-builder' => { org: 'ErnestIO', version: 'aws' },
+            'network-adapter' => { org: 'ErnestIO', version: 'aws' },
+            'instance-builder' => { org: 'ErnestIO', version: 'aws' },
+            'instance-adapter' => { org: 'ErnestIO', version: 'aws' },
+            'firewall-builder' => { org: 'ErnestIO', version: 'aws' },
+            'firewall-adapter' => { org: 'ErnestIO', version: 'aws' },
+            'nat-builder' => { org: 'ErnestIO', version: 'aws' },
+            'nat-adapter' => { org: 'ErnestIO', version: 'aws' },
+            'execution-builder' => { org: 'ErnestIO', version: 'aws' },
+            'execution-adapter' => { org: 'ErnestIO', version: 'aws' },
 
-            'workflow-manager' => { org: 'ernestio', version: 'aws' },
-            'definition-mapper' => { org: 'ernestio', version: 'aws' },
-            'vcloud-definition-mapper' => { org: 'ernestio', version: 'develop' },
-            'aws-definition-mapper' => { org: 'ernestio', version: 'develop' },
+            'workflow-manager' => { org: 'ErnestIO', version: 'aws' },
+            'definition-mapper' => { org: 'ErnestIO', version: 'aws' },
+            'vcloud-definition-mapper' => { org: 'ErnestIO', version: 'develop' },
+            'aws-definition-mapper' => { org: 'ErnestIO', version: 'develop' },
 
-            'all-all-fake-connector' => { org: 'ernestio', version: 'aws' }
+            'all-all-fake-connector' => { org: 'ErnestIO', version: 'aws' }
           }
         }
       }
