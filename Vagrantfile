@@ -31,10 +31,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe 'ernest-vagrant'
     chef.json = {
       'ernest' => {
+        'version' => 'develop',
+=begin
         'uat' => {
           'ernest-cli' => { org: 'ErnestIO', version: 'aws' }
         },
-        'version' => 'develop',
         'services' => {
           'gpb' => {
             'datacenter-store' => { org: 'ErnestIO', version: 'aws' },
@@ -61,6 +62,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             'all-all-fake-connector' => { org: 'ErnestIO', version: 'aws' }
           }
         }
+=end
       }
     }
   end
