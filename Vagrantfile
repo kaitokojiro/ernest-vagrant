@@ -33,7 +33,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       'ernest' => {
         'uat' => {
           'ernest-cli' => { org: 'ErnestIO', version: 'aws' }
-         },
+        },
         'version' => 'develop',
         'services' => {
           'gpb' => {
