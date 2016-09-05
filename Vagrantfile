@@ -9,9 +9,8 @@ VAGRANTFILE_API_VERSION = '2'.freeze
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.forward_agent = true
 
-  config.vm.box = 'ubuntu/wily64'
-  # config.vm.box = 'flow-basebox'
-  # config.vm.box_url = 'http://artefact.r3labs.io/boxes/flow-basebox-1.3.0.box'
+  # config.vm.box = 'ubuntu/wily64'
+  config.vm.box = 'R3Labs/ernest'
 
   config.vm.hostname = 'ernest.local'
   config.vm.network 'private_network', ip: '10.50.1.11'
