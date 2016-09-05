@@ -2,6 +2,11 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+deps = 'make deps'
+if %w(dev test).include? node['ernest']['environment']
+  deps = 'make dev-deps || true && make deps'
+end
+
 ernest_path = '/opt/go/src/github.com/r3labs'
 
 directory ernest_path do
@@ -20,7 +25,7 @@ git "#{ernest_path}/natsc" do
 end
 
 execute 'install natsc' do
-  command "su #{node['server']['user']} -l -c 'cd #{ernest_path}/natsc && make deps && make install'"
+  command "su #{node['server']['user']} -l -c 'cd #{ernest_path}/natsc && #{deps} && make install'"
   action :run
 end
 
