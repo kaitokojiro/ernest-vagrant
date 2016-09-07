@@ -10,8 +10,8 @@ a vagrant up.
 
 ## Build status
 
-* master:  [![CircleCI](https://circleci.com/gh/ErnestIO/ernest-vagrant/tree/master.svg?style=svg)](https://circleci.com/gh/ErnestIO/ernest-vagrant/tree/master)
-* develop: [![CircleCI](https://circleci.com/gh/ErnestIO/ernest-vagrant/tree/develop.svg?style=svg)](https://circleci.com/gh/ErnestIO/ernest-vagrant/tree/develop)
+* master:  [![CircleCI](https://circleci.com/gh/ernestio/ernest-vagrant/tree/master.svg?style=svg)](https://circleci.com/gh/ernestio/ernest-vagrant/tree/master)
+* develop: [![CircleCI](https://circleci.com/gh/ernestio/ernest-vagrant/tree/develop.svg?style=svg)](https://circleci.com/gh/ernestio/ernest-vagrant/tree/develop)
 
 ## Prerequisites
 
