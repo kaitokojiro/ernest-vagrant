@@ -31,37 +31,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.json = {
       'ernest' => {
         'version' => 'develop',
-=begin
-        'uat' => {
-          'ernest-cli' => { org: 'ErnestIO', version: 'aws' }
-        },
         'services' => {
           'gpb' => {
-            'datacenter-store' => { org: 'ErnestIO', version: 'aws' },
-            'api-gateway' => { org: 'ErnestIO', version: 'aws' },
-
-            'router-builder' => { org: 'ErnestIO', version: 'aws' },
-            'router-adapter' => { org: 'ErnestIO', version: 'aws' },
-            'network-builder' => { org: 'ErnestIO', version: 'aws' },
-            'network-adapter' => { org: 'ErnestIO', version: 'aws' },
-            'instance-builder' => { org: 'ErnestIO', version: 'aws' },
-            'instance-adapter' => { org: 'ErnestIO', version: 'aws' },
-            'firewall-builder' => { org: 'ErnestIO', version: 'aws' },
-            'firewall-adapter' => { org: 'ErnestIO', version: 'aws' },
-            'nat-builder' => { org: 'ErnestIO', version: 'aws' },
-            'nat-adapter' => { org: 'ErnestIO', version: 'aws' },
-            'execution-builder' => { org: 'ErnestIO', version: 'aws' },
-            'execution-adapter' => { org: 'ErnestIO', version: 'aws' },
-
-            'workflow-manager' => { org: 'ErnestIO', version: 'aws' },
-            'definition-mapper' => { org: 'ErnestIO', version: 'aws' },
-            'vcloud-definition-mapper' => { org: 'ErnestIO', version: 'develop' },
-            'aws-definition-mapper' => { org: 'ErnestIO', version: 'develop' },
-
-            'all-all-fake-connector' => { org: 'ErnestIO', version: 'aws' }
+            'workflow-manager' => { org: 'ernestio', version: 'vpc' },
+            'aws-definition-mapper' => { org: 'ernestio', version: 'vpc' },
+            'all-all-fake-connector' => { org: 'ernestio', version: 'vpc' },
+            'firewall-adapter' => { org: 'ernestio', version: 'vpc' },
+            'network-adapter' => { org: 'ernestio', version: 'vpc' },
+            'nat-adapter' => { org: 'ernestio', version: 'vpc' },
+            'instance-adapter' => { org: 'ernestio', version: 'vpc' }
           }
         }
-=end
       }
     }
   end
