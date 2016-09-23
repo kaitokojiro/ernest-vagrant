@@ -31,6 +31,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.json = {
       'ernest' => {
         'version' => 'develop',
+=begin
         'services' => {
           'gpb' => {
             'workflow-manager' => { org: 'ernestio', version: 'vpc' },
@@ -42,6 +43,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             'instance-adapter' => { org: 'ernestio', version: 'vpc' }
           }
         }
+=end
       }
     }
   end
