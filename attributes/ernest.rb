@@ -97,3 +97,4 @@ default['ernest']['connectors']['instances'] = %w(fake vcloud vcloud-fake aws aw
 default['ernest']['connectors']['firewalls'] = %w(fake vcloud vcloud-fake aws aws-fake)
 default['ernest']['connectors']['nats'] = %w(fake vcloud vcloud-fake aws aws-fake)
 default['ernest']['connectors']['executions'] = %w(fake salt)
+default['ernest']['connectors']['elbs'] = %w(fake aws aws-fake)
