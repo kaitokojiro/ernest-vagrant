@@ -69,6 +69,9 @@ default['ernest']['services']['gpb'] = {
   'instance-creator-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
   'instance-updater-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
   'instance-deleter-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] }
+  'elb-creator-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
+  'elb-updater-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
+  'elb-deleter-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] }
 }
 
 default['ernest']['services']['vcloud'] = {
