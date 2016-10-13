@@ -68,7 +68,10 @@ default['ernest']['services']['gpb'] = {
   'vpc-deleter-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
   'instance-creator-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
   'instance-updater-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
-  'instance-deleter-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] }
+  'instance-deleter-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
+  'elb-creator-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
+  'elb-updater-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
+  'elb-deleter-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] }
 }
 
 default['ernest']['services']['vcloud'] = {
@@ -94,3 +97,4 @@ default['ernest']['connectors']['instances'] = %w(fake vcloud vcloud-fake aws aw
 default['ernest']['connectors']['firewalls'] = %w(fake vcloud vcloud-fake aws aws-fake)
 default['ernest']['connectors']['nats'] = %w(fake vcloud vcloud-fake aws aws-fake)
 default['ernest']['connectors']['executions'] = %w(fake salt)
+default['ernest']['connectors']['elbs'] = %w(fake aws aws-fake)
