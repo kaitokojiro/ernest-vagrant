@@ -31,16 +31,12 @@ default['ernest']['application']['user_password'] = node['secrets']['ernest']['a
 default['ernest']['application']['user_salt']     = node['secrets']['ernest']['admin_salt']
 
 default['ernest']['services']['gpb'] = {
-  'nat-builder' => { org: 'ernestio', version: node['ernest']['version'] },
-  'firewall-builder' => { org: 'ernestio', version: node['ernest']['version'] },
   'router-builder' => { org: 'ernestio', version: node['ernest']['version'] },
   'execution-builder' => { org: 'ernestio', version: node['ernest']['version'] },
   'generic-builder' => { org: 'ernestio', version: node['ernest']['version'] },
   'workflow-manager' => { org: 'ernestio', version: node['ernest']['version'] },
   'definition-mapper' => { org: 'ernestio', version: node['ernest']['version'] },
   'router-adapter' => { org: 'ernestio', version: node['ernest']['version'] },
-  'nat-adapter' => { org: 'ernestio', version: node['ernest']['version'] },
-  'firewall-adapter' => { org: 'ernestio', version: node['ernest']['version'] },
   'execution-adapter' => { org: 'ernestio', version: node['ernest']['version'] },
   'generic-adapter' => { org: 'ernestio', version: node['ernest']['version'] },
   'all-all-fake-connector' => { org: 'ernestio', version: node['ernest']['version'] },
