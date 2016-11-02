@@ -24,7 +24,6 @@ file '/etc/ernest/config.json' do # ~FC009: not based on a file
   content lazy {
     Chef::JSONCompat.to_json_pretty(redis: node['redis'],
                                     postgres: node['postgres']['database'],
-                                    logstash: node['logstash']['dev'],
                                     monitor: node['monitor'],
                                     connectors: node['ernest']['connectors'],
                                     salt: node['salt'])
