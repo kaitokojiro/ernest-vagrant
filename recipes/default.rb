@@ -14,8 +14,6 @@ include_recipe 'ernest-vagrant::gnatsd'
 
 include_recipe 'java'
 
-include_recipe 'ernest-vagrant::elk'
-
 include_recipe 'ernest-vagrant::nginx'
 include_recipe 'ernest-vagrant::redis'
 

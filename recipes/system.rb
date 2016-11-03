@@ -35,6 +35,13 @@ file '/etc/hostname' do
   content "#{hostname}\n"
 end
 
+file node['ernest']['logfile'] do
+  content "ERNEST LOGS\n"
+  owner node['server']['user']
+  group node['server']['group']
+  mode '0755'
+end
+
 # Setup ENV variables
 nats_uri = "nats://#{node['server']['hostname']}:4222"
 if node['secrets']['nats']['username'] != ''
@@ -49,6 +56,7 @@ template '/etc/profile.d/ernestenv.sh' do # ~FC033
   mode '0755'
   variables(
     env: node['ernest']['environment'],
+    logfile: node['ernest']['logfile'],
     nats_uri: nats_uri,
     nats_uri_test: nats_uri_test
   )

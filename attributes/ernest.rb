@@ -17,6 +17,7 @@ default['ernest']['libraries']['myst']['vcloud_provider']['folder'] = 'lib/myst/
 default['ernest']['environment'] = 'dev'
 
 default['ernest']['environments'] = %w(dev test staging)
+default['ernest']['logfile'] = '/var/log/ernest.log'
 
 default['ernest']['application']['repos'] = {}
 

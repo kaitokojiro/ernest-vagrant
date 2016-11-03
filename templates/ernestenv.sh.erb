@@ -1,5 +1,6 @@
 # Ernest environment
 export ERNEST_ENV=<%= @env %>
+export ERNEST_LOG_FILE=<%= @logfile %>
 
 export NATS_URI=<%= @nats_uri %>
 <% if ['dev', 'test'].include? @env %>
