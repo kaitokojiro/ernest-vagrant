@@ -49,7 +49,8 @@ node['ernest']['services']['gpb'].each do |microservice, attrs|
           organization: attrs[:org],
           name: microservice,
           user: node['server']['user'],
-          natsuri: node['nats']['url']
+          natsuri: node['nats']['url'],
+          logfile: node['ernest']['logfile']
         }
       end
     )
