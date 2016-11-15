@@ -31,13 +31,3 @@ node['ernest']['uat'].each do |name, attrs|
     action :run
   end
 end
-
-name = 'uat-agent'
-attrs = node['ernest']['uat']['uat-agent']
-org_dir = "/opt/go/src/github.com/#{attrs['org']}"
-dir = "#{org_dir}/#{name}"
-
-execute 'Specific uat setup' do
-  command "su #{node['server']['user']} -l -c 'cd #{dir} && ./ci_setup.sh'"
-  action :run
-end
