@@ -47,24 +47,7 @@ default['ernest']['services']['gpb'] = {
   'api-gateway' => { org: 'ernestio', version: node['ernest']['version'] },
   'vcloud-definition-mapper' => { org: 'ernestio', version: node['ernest']['version'] },
   'aws-definition-mapper' => { org: 'ernestio', version: node['ernest']['version'] },
-  'network-creator-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
-  'network-deleter-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
-  'firewall-creator-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
-  'firewall-updater-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
-  'firewall-deleter-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
-  'nat-creator-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
-  'nat-updater-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
-  'nat-deleter-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
-  'vpc-creator-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
-  'vpc-deleter-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
-  'instance-creator-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
-  'instance-updater-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
-  'instance-deleter-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
-  'elb-creator-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
-  'elb-updater-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
-  'elb-deleter-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
-  's3-all-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] },
-  'route53-all-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] }
+  'all-all-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] }
 }
 
 default['ernest']['services']['vcloud'] = {
