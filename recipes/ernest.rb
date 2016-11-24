@@ -50,7 +50,8 @@ node['ernest']['services']['gpb'].each do |microservice, attrs|
           name: microservice,
           user: node['server']['user'],
           natsuri: node['nats']['url'],
-          logfile: node['ernest']['logfile']
+          logfile: node['ernest']['logfile'],
+          connectors: node['ernest']['connectors_list']
         }
       end
     )
