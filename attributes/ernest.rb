@@ -74,3 +74,4 @@ default['ernest']['connectors']['firewalls'] = %w(fake vcloud vcloud-fake aws aw
 default['ernest']['connectors']['nats'] = %w(fake vcloud vcloud-fake aws aws-fake)
 default['ernest']['connectors']['executions'] = %w(fake salt)
 default['ernest']['connectors']['elbs'] = %w(fake aws aws-fake)
+default['ernest']['connectors_list'] = 'nat.create.aws,nat.update.aws,nat.delete.aws,network.create.aws,network.delete.aws,route53.create.aws,route53.delete.aws,route53.update.aws,s3.create.aws,s3.update.aws,s3.delete.aws,elb.create.aws,elb.delete.aws,elb.update.aws,vpc.create.aws,vpc.delete.aws,instance.delete.aws,instance.update.aws,instance.create.aws,firewall.create.aws,firewall.update.aws,firewall.delete.aws,ebs.create.aws,ebs.update.aws,ebs.delete.aws'
