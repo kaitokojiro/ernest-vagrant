@@ -9,3 +9,7 @@ Metrics/MethodLength:
 
 Metrics/BlockLength:
   Enabled: false
+
+AllCops:
+  Exclude:
+    - Gemfile

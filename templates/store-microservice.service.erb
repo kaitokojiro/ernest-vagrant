@@ -7,6 +7,7 @@ Requires=docker.service
 User=<%= @user %>
 Restart=always
 Environment=NATS_URI=<%= @natsuri %>
+Environment=ERNEST_CRYPTO_KEY=<%= @crypto_key %>
 WorkingDirectory=/opt/go/src/github.com/<%= @organization %>/<%= @name %>
 ExecStartPre=/usr/bin/timeout 120 /bin/bash -c 'while ! nc -z -v -q 1 localhost 4222; do sleep 1; done'
 ExecStartPre=/usr/bin/timeout 120 /bin/bash -c 'while ! nc -z -v -q 1 localhost 6379; do sleep 1; done'

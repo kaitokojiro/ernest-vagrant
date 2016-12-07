@@ -16,6 +16,7 @@ node['ernest']['services']['vcloud'].each do |microservice, _attrs|
           user: node['server']['user'],
           gopath: '/opt/go',
           jrubypath: '/usr/local/jruby-1.7.13/bin/',
+          crypto_key: node['ernest']['crypto_key'],
           natsuri: node['nats']['url']
         }
       end
@@ -50,6 +51,7 @@ node['ernest']['services']['gpb'].each do |microservice, attrs|
           name: microservice,
           user: node['server']['user'],
           natsuri: node['nats']['url'],
+          crypto_key: node['ernest']['crypto_key'],
           logfile: node['ernest']['logfile'],
           connectors: node['ernest']['connectors_list']
         }

@@ -9,6 +9,7 @@ Restart=always
 Environment=NATS_URI=<%= @natsuri %>
 Environment=GOPATH=<%= @gopath %>
 Environment=JRUBYPATH=<%= @jrubypath %>
+Environment=ERNEST_CRYPTO_KEY=<%= @crypto_key %>
 WorkingDirectory=/opt/ernest/<%= @name %>
 ExecStartPre=/usr/bin/timeout 120 /bin/bash -c 'while ! nc -z -v -q 1 localhost 4222; do sleep 1; done'
 ExecStart=/bin/sh -c './run.sh'
