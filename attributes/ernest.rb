@@ -18,7 +18,7 @@ default['ernest']['environment'] = 'dev'
 
 default['ernest']['environments'] = %w(dev test staging)
 default['ernest']['logfile'] = '/var/log/ernest.log'
-default['ernest']['crypto_key'] = 'mMYlPIvI11z20H1BnBmB'
+default['ernest']['crypto_key'] = 'mMYlPIvI11z20H1BnBmB223355667788'
 
 default['ernest']['application']['repos'] = {}
 
