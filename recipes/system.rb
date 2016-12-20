@@ -59,6 +59,7 @@ template '/etc/profile.d/ernestenv.sh' do # ~FC033
     logfile: node['ernest']['logfile'],
     connectors: node['ernest']['connectors_list'],
     nats_uri: nats_uri,
+    crypto: node['ernest']['crypto_key'],
     nats_uri_test: nats_uri_test
   )
 end
