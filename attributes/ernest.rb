@@ -32,12 +32,8 @@ default['ernest']['application']['user_password'] = node['secrets']['ernest']['a
 default['ernest']['application']['user_salt']     = node['secrets']['ernest']['admin_salt']
 
 default['ernest']['services']['gpb'] = {
-  'execution-builder' => { org: 'ernestio', version: node['ernest']['version'] },
-  'generic-builder' => { org: 'ernestio', version: node['ernest']['version'] },
-  'workflow-manager' => { org: 'ernestio', version: node['ernest']['version'] },
+  'scheduler' => { org: 'ernestio', version: node['ernest']['version'] },
   'definition-mapper' => { org: 'ernestio', version: node['ernest']['version'] },
-  'execution-adapter' => { org: 'ernestio', version: node['ernest']['version'] },
-  'generic-adapter' => { org: 'ernestio', version: node['ernest']['version'] },
   'all-all-fake-connector' => { org: 'ernestio', version: node['ernest']['version'] },
   'monit' => { org: 'ernestio', version: node['ernest']['version'] },
   'logger' => { org: 'ernestio', version: node['ernest']['version'] },
@@ -46,8 +42,6 @@ default['ernest']['services']['gpb'] = {
   'datacenter-store' =>  { org: 'ernestio', version: node['ernest']['version'] },
   'service-store' => { org: 'ernestio', version: node['ernest']['version'] },
   'api-gateway' => { org: 'ernestio', version: node['ernest']['version'] },
-  'vcloud-definition-mapper' => { org: 'ernestio', version: node['ernest']['version'] },
-  'aws-definition-mapper' => { org: 'ernestio', version: node['ernest']['version'] },
   'all-all-aws-connector' => { org: 'ernestio', version: node['ernest']['version'] }
 }
 
