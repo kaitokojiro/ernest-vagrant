@@ -4,3 +4,6 @@
 
 default['monitor']['host'] = '127.0.0.1'
 default['monitor']['port'] = '22000'
+
+default['logger']['host'] = '127.0.0.1'
+default['logger']['port'] = '22001'

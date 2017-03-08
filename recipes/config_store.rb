@@ -25,6 +25,7 @@ file '/etc/ernest/config.json' do # ~FC009: not based on a file
     Chef::JSONCompat.to_json_pretty(redis: node['redis'],
                                     postgres: node['postgres']['database'],
                                     monitor: node['monitor'],
+                                    logger: node['logger'],
                                     connectors: node['ernest']['connectors'],
                                     salt: node['salt'])
   }
